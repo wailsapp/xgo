@@ -1,0 +1,6 @@
+deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic main
+deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic main
+deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main
+deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main
+deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main
+deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main
