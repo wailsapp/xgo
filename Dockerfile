@@ -22,10 +22,11 @@
 #     xgo -v -image xgo-wails:develop -targets=linux/arm-7 ./
 #
 ################################################################################
-ARG XGO_VERSION=go-1.14.1
+ARG XGO_IMAGE=crazymax/xgo
+ARG XGO_VERSION=1.14.1
 
 # Platform armhf | DO NOT combine with x86_64 or it breaks the apt-get install
-FROM techknowlogick/xgo:$XGO_VERSION as armhf
+FROM $XGO_IMAGE:$XGO_VERSION as armhf
 COPY arm.list /etc/apt/sources.list.d
 RUN apt-get update && \
   dpkg --add-architecture armhf && \
@@ -41,7 +42,7 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 # Platform armhf
 
-FROM techknowlogick/xgo:$XGO_VERSION as x86_64
+FROM $XGO_IMAGE:$XGO_VERSION as x86_64
 
 RUN \
   apt-get update && \
@@ -53,7 +54,7 @@ RUN \
   /usr/bin/curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture)" \
   && chmod +x /usr/local/bin/gosu
 
-FROM techknowlogick/xgo:$XGO_VERSION
+FROM $XGO_IMAGE:$XGO_VERSION
 
 # Override the base image's build.sh file
 # REMOVEME: Once PR gets merged to upstream
