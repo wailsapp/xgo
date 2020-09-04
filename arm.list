@@ -1,6 +1,6 @@
-deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic main
-deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic main
-deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main
-deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main
-deb [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main
-deb-src [ arch=armhf ] http://ports.ubuntu.com/ubuntu-ports/ bionic-security main
+# deb http://snapshot.debian.org/archive/debian/20200803T070000Z stretch main
+deb [ arch=armhf ] http://deb.debian.org/debian stretch main
+# deb http://snapshot.debian.org/archive/debian-security/20200803T070000Z stretch/updates main
+deb [ arch=armhf ] http://security.debian.org/debian-security stretch/updates main
+# deb http://snapshot.debian.org/archive/debian/20200803T070000Z stretch-updates main
+deb [ arch=armhf ] http://deb.debian.org/debian stretch-updates main

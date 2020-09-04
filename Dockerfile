@@ -23,7 +23,7 @@
 #
 ################################################################################
 ARG XGO_IMAGE=crazymax/xgo
-ARG XGO_VERSION=1.14.1
+ARG XGO_VERSION=1.15.1
 
 # Platform armhf | DO NOT combine with x86_64 or it breaks the apt-get install
 FROM $XGO_IMAGE:$XGO_VERSION as armhf
@@ -49,6 +49,7 @@ RUN \
   apt-get --no-install-recommends install -y \
   libwebkit2gtk-4.0=* libgtk-3.0=* \
   libwebkit2gtk-4.0-dev:* \
+  libssl-dev:* \
   curl && \
   rm -rf /var/lib/apt/lists/* && \
   /usr/bin/curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-$(dpkg --print-architecture)" \
