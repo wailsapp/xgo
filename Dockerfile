@@ -23,24 +23,24 @@
 #
 ################################################################################
 ARG XGO_IMAGE=crazymax/xgo
-ARG XGO_VERSION=1.15.1
+ARG XGO_VERSION=1.16.2
 
 # Platform armhf | DO NOT combine with x86_64 or it breaks the apt-get install
-FROM $XGO_IMAGE:$XGO_VERSION as armhf
-COPY arm.list /etc/apt/sources.list.d
-RUN apt-get update && \
-  dpkg --add-architecture armhf && \
-  apt-get install -y --no-install-recommends \
-  libwebkit2gtk-4.0:armhf \
-  libgtk-3-dev:armhf \
-  libsoup2.4-dev:armhf \
-  libgdk-pixbuf2.0-dev:armhf \
-  libpango1.0-dev:armhf \
-  libharfbuzz-dev:armhf \
-  libxml2-dev:armhf \
-  libicu-dev:armhf && \
-  rm -rf /var/lib/apt/lists/*
-# Platform armhf
+# FROM $XGO_IMAGE:$XGO_VERSION as armhf
+# COPY arm.list /etc/apt/sources.list.d
+# RUN apt-get update && \
+#   dpkg --add-architecture armhf && \
+#   apt-get install -y --no-install-recommends \
+#   libwebkit2gtk-4.0:armhf \
+#   libgtk-3-dev:armhf \
+#   libsoup2.4-dev:armhf \
+#   libgdk-pixbuf2.0-dev:armhf \
+#   libpango1.0-dev:armhf \
+#   libharfbuzz-dev:armhf \
+#   libxml2-dev:armhf \
+#   libicu-dev:armhf && \
+#   rm -rf /var/lib/apt/lists/*
+# # Platform armhf
 
 FROM $XGO_IMAGE:$XGO_VERSION as x86_64
 
@@ -70,8 +70,8 @@ COPY --from=x86_64 /usr/share/pkgconfig /usr/share/pkgconfig
 COPY --from=x86_64 /usr/local/bin/gosu /usr/local/bin/gosu
 
 # armhf
-COPY --from=armhf /lib/arm-linux-gnueabihf /lib/arm-linux-gnueabihf
-COPY --from=armhf /usr/lib/arm-linux-gnueabihf /usr/lib/arm-linux-gnueabihf
+# COPY --from=armhf /lib/arm-linux-gnueabihf /lib/arm-linux-gnueabihf
+# COPY --from=armhf /usr/lib/arm-linux-gnueabihf /usr/lib/arm-linux-gnueabihf
 
 # Allow for switching users
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
